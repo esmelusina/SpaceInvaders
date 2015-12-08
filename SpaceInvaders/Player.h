@@ -1,6 +1,7 @@
 #pragma once
 #include "gameObject.h"
 
+//Player inherits from gameobject
 class Player : public GameObject
 {
 public:
