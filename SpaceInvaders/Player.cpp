@@ -11,7 +11,7 @@ void Player::onUpdate()
 	if (sfw::getKey(' ') && delay > rof)
 	{
 		delay = 0;
-		gs->spawnBullet(position.x, position.y, 300);
+		gs->spawnBullet(position.x, position.y+radius, 300);
 	}
 	if(sfw::getKey('A'))
 	{
@@ -38,13 +38,20 @@ void Player::onCollision(GameObject &o)
 	if (o.velocity.y < 0)
 	{
 		health--;
-		o.active = false;
-		radius /= 1.1f;
+		o.setInactive();
 		switch (health)
 		{
-		case 2: color  = GREEN;  break;
-		case 1: color  = YELLOW; break;
-		case 0: active = false;  break;
+		case 2: color  = MAGENTA;  break;
+		case 1: color  = ORANGE; break;
+		case 0: setInactive();  break;
 		}
 	}
+}
+
+void Player::onInactive()
+{
+	gs->spawnParticle(position.x, position.y, 0, 600, .2f, RED);
+	gs->spawnParticle(position.x, position.y, 3, 15, .4f, YELLOW);
+	gs->spawnParticle(position.x, position.y, 12, 0, .3f, MAGENTA);
+	gs->spawnParticle(position.x, position.y, 15, 24, .6f, GREEN);
 }

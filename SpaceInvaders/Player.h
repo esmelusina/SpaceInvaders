@@ -9,14 +9,16 @@ public:
 	int health;
 
 	Player(float x, float y)
-			: GameObject(x,y,35),
-			  delay(0), rof(.2f),
+			: GameObject(x,y,28),
+			  delay(0), rof(.5f),
 			health(3)
 	{
-		color = BLUE;
-		speed = 120; //add speed to gameObject
+		sprite = spritePlayer;
+		//color = BLUE;
+		speed = 160; //add speed to gameObject
 	}
 
 	void onUpdate();
 	void onCollision(GameObject &o);
+	void onInactive();
 };

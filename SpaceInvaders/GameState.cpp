@@ -1,5 +1,5 @@
 #include "GameState.h"
-
+#include <string>
 void GameState::update()
 {
 	////////////////////////////////////////////////////
@@ -14,7 +14,7 @@ void GameState::update()
 		spawnRate *= .98f;
 		// How do we reset our timer?
 		spawnEnemy(randRange(BOUNDS_LEFT,BOUNDS_RIGHT),
-										BOUNDS_TOP);
+										BOUNDS_TOP+40);
 	}
 	
 	//////////////////////////////////////////////////////
@@ -24,6 +24,8 @@ void GameState::update()
 		bullets[i].update();
 	for (int i = 0; i < enemies.size(); ++i)
 		enemies[i].update();
+	for (int i = 0; i < particles.size(); ++i)
+		particles[i].update();
 
 
 	///////////////////////////////////////////////////
@@ -31,7 +33,6 @@ void GameState::update()
 	// Player vs Bullets
 	for (int i = 0; i < bullets.size(); ++i)
 		collides(player, bullets[i]);
-
 	for (int i = 0; i < enemies.size(); ++i)
 		collides(player, enemies[i]);
 
@@ -49,11 +50,20 @@ void GameState::update()
 
 void GameState::draw()
 {
+	sfw::drawTexture(spriteSpace,WINDOW_WIDTH/2,WINDOW_HEIGHT/2,
+								   WINDOW_WIDTH, WINDOW_HEIGHT);
+
 	player.draw();
 	for (int i = 0; i < bullets.size(); ++i)
 		bullets[i].draw();
 	for (int i = 0; i < enemies.size(); ++i)
 		enemies[i].draw();
+	for (int i = 0; i < particles.size(); ++i)
+		particles[i].draw();
+
+	
+	sfw::drawString(spriteFont, std::to_string(score).c_str(),
+										0, WINDOW_HEIGHT, 20, 20);
 }
 
 void GameState::spawnEnemy(float x, float y)
@@ -69,8 +79,20 @@ void GameState::spawnEnemy(float x, float y)
 	enemies.push_back(b);
 }
 
-void GameState::spawnBullet(float x, float y,
-	float a_speed)
+void GameState::spawnParticle(float x, float y, float a_startRadius, float a_endRadius, float a_lifetime, unsigned a_color)
+{
+	Particle b(x, y,a_startRadius,a_endRadius,a_lifetime,a_color);
+
+	for (int i = 0; i < particles.size(); ++i)
+		if (!particles[i].active)
+		{
+			particles[i] = b;
+			return;
+		}
+	particles.push_back(b);
+}
+
+void GameState::spawnBullet(float x, float y, float a_speed)
 {
 	Bullet b(x, y, a_speed);
 

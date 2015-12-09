@@ -6,6 +6,7 @@
 // Anywhere else, now, we can call spawnParticle and make magic!
 class Particle : public GameObject
 {
+public:
 	float startRadius, endRadius;
 	float lifespan, lifetime;
 
@@ -24,6 +25,6 @@ class Particle : public GameObject
 		radius = lerp(startRadius, endRadius, lifespan / lifetime);
 
 		lifespan += sfw::getDeltaTime();		
-		if (lifespan > lifetime) active = false;
+		if (lifespan > lifetime) setInactive();
 	}
 };

@@ -5,12 +5,14 @@
 class Enemy : public GameObject
 {
 public:
-	float delay, rof;
+	float delay, rof, trailDelay, trailRate;
 	Enemy(float x, float y)
-		: GameObject(x, y, 34),
-		delay(0), rof(1.2f)
+		: GameObject(x, y, 18),
+		delay(0), rof(1.2f),
+		trailDelay(0), trailRate(.2f)
 	{
-		color = RED;
+		sprite = spriteEnemy;
+		//color = RED;
 		speed = 50;
 		velocity.y = -speed;
 	}
@@ -18,4 +20,6 @@ public:
 	void onCollision(GameObject &o);
 
 	void onUpdate();
+
+	void onInactive();
 };
