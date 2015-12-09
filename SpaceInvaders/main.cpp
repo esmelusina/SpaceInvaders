@@ -10,10 +10,10 @@ int main()
 
 	GameState gs;
 
-	while (sfw::stepContext())
+	while (sfw::stepContext() && !sfw::getKey(KEY_ESCAPE))
 	{
 		gs.update();
-		gs.draw();		
+		gs.draw();
 	}
 
 	sfw::termContext();	

@@ -1,7 +1,27 @@
 #include "vec2.h"
 #include <cmath>
+#include <ctime>
 
-//sqrt((x2 - x1)*(x2 - x1) + (y2 - y1)*(y2 - y1))
+//  0 = start
+// .5 = midpoint
+//  1 = end
+float lerp(float start, float end, float alpha)
+{
+	return start + alpha*(end - start);
+}
+
+
+float randRange(float min, float max)
+{
+	//random number between 0-1
+	//if I roll a 0, I should get min
+	//if I roll a 1, I should get max
+	float alpha = rand() / (RAND_MAX*1.f);
+	
+	return min + alpha*(max-min);
+}
+
+
 float dist(vec2 a, vec2 b)
 {
 	float dx = a.x - b.x;

@@ -7,3 +7,5 @@
 #define BOUNDS_BOTTOM  60
 #define BOUNDS_LEFT    80
 #define BOUNDS_RIGHT  WINDOW_WIDTH-80
+
+class GameState;
