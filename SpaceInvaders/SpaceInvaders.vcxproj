@@ -132,6 +132,7 @@
     <ClInclude Include="sfwdraw.h" />
     <ClInclude Include="SplashState.h" />
     <ClInclude Include="vec2.h" />
+    <ClInclude Include="VictoryState.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Enemy.cpp" />
@@ -142,6 +143,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SplashState.cpp" />
     <ClCompile Include="vec2.cpp" />
+    <ClCompile Include="VictoryState.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

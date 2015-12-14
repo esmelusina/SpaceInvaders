@@ -25,7 +25,13 @@ void SplashState::draw()
 	y = WINDOW_HEIGHT * 3 / 4;
 	drawFontCentered(spriteFont, TITLE, x, y, s, s);
 
-	s = 16;
+	s = 20;
 	y = WINDOW_HEIGHT * 5 / 8;
 	drawFontCentered(spriteFont, "Press Enter to Start", x, y, s, s, color);
+	drawFontCentered(spriteFont, "Press Escape to Quit", x, y-20, s, s, color);
+
+	s = 18;
+	y = WINDOW_HEIGHT * 8 / 16;
+	drawFontCentered(spriteFont, "Esmeralda Salamone", x, y, s, s);
+	drawFontCentered(spriteFont, "esmelusina@gmail.com", x, y-19, 16, 16, MAGENTA);
 }

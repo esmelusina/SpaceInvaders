@@ -46,13 +46,15 @@ void GameState::update()
 		for (int j = i+1; j < bullets.size(); ++j) // for every bullet after
 			collides(bullets[i], bullets[j]);
 
-	if (!player.active)
+	if (applicationState == GAME)
 	{
-		applicationState = SPLASH;
-	}
+		if (!player.active)
+			applicationState = SPLASH;
 
-	if (sfw::getKey('P'))
-		applicationState = PAUSE;
+		if (sfw::getKey('P'))
+			applicationState = PAUSE;
+	}
+	else player.setInactive();
 }
 
 

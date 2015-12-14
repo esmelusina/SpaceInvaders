@@ -3,11 +3,11 @@
 #include "BaseState.h"
 #include "sfwdraw.h"
 
-class PauseState : public BaseState
+class VictoryState : public BaseState
 {
 public:
 	unsigned color, baseColor;
-	PauseState()
+	VictoryState()
 		: color(CYAN), baseColor(color - 0xff)
 	{
 	}

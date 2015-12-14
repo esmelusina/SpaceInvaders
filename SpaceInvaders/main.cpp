@@ -1,8 +1,10 @@
 #include "sfwdraw.h"
-#include "GameState.h"
 #include "declconst.h"
+
+#include "GameState.h"
 #include "SplashState.h"
 #include "PauseState.h"
+#include "VictoryState.h"
 
 // definition
 unsigned spritePlayer;
@@ -24,11 +26,12 @@ int main()
 	spriteSpace    = sfw::loadTextureMap("./textures/space.jpg");
 	spriteFont     = sfw::loadTextureMap("./textures/fontmap.png",16,16);
 	// github.com/esmelusina/sfw-AIE-Framework/blob/master/res/fontmap.png
-	GameState	gs;
-	SplashState ss;
-	PauseState	ps;
+	GameState	 gs;
+	SplashState  ss;
+	PauseState	 ps;
+	VictoryState vs;
 	// add a new state...
-	while (sfw::stepContext() && !sfw::getKey(KEY_ESCAPE))
+	while (sfw::stepContext() && applicationState != QUIT)
 	{
 		switch (applicationState)
 		{
@@ -48,7 +51,12 @@ int main()
 			ps.update();
 			ps.draw();
 			break;
-
+		case VICTORY:
+			gs.update();
+			gs.draw();
+			vs.update();
+			vs.draw();
+			break;
 		}
 
 	}
