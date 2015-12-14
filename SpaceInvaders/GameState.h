@@ -5,8 +5,9 @@
 #include "declconst.h"
 #include <vector>
 #include "Particle.h"
+#include "BaseState.h"
 
-class GameState
+class GameState : public BaseState
 {
 public:
 	Player player;
@@ -23,6 +24,17 @@ public:
 		spawnDelay(0), spawnRate(1.8f), score(0)
 	{
 		GameObject::gs = this;
+	}
+
+	void reset()
+	{
+		score = 0;
+		spawnDelay = 0;
+		spawnRate = 1.8f;
+		player = Player((BOUNDS_RIGHT + BOUNDS_LEFT) / 2, BOUNDS_BOTTOM);
+		bullets.clear();
+		enemies.clear();
+		particles.clear();
 	}
 
 	void update();

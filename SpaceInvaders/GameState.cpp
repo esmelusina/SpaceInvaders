@@ -45,6 +45,14 @@ void GameState::update()
 	for (int i = 0; i+1 < bullets.size(); ++i)	// for each bullet,
 		for (int j = i+1; j < bullets.size(); ++j) // for every bullet after
 			collides(bullets[i], bullets[j]);
+
+	if (!player.active)
+	{
+		applicationState = SPLASH;
+	}
+
+	if (sfw::getKey('P'))
+		applicationState = PAUSE;
 }
 
 
