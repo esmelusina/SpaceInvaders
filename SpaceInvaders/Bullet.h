@@ -1,7 +1,8 @@
 #pragma once
 #include "gameObject.h"
 #include <cmath>
-//Player inherits from gameobject
+
+
 class Bullet : public GameObject
 {
 public:
@@ -20,7 +21,7 @@ public:
 	void onUpdate()
 	{
 		lifespan -= sfw::getDeltaTime();
-		position.x += sin(lifespan*10)*3;
+		position.x += sin(lifespan*7)*3;
 		radius -= sfw::getDeltaTime()*4;
 
 		if (lifespan < 0) active = false;

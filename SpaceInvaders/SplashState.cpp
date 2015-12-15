@@ -16,9 +16,9 @@ void SplashState::update()
 void SplashState::draw()
 {
 	sfw::drawTexture(spriteSpace, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2,
-		WINDOW_WIDTH, WINDOW_HEIGHT);
+								  WINDOW_WIDTH,     WINDOW_HEIGHT);
 
-	unsigned x, y, s;
+	unsigned x, y, s; 
 
 	s = 32;
 	x = (WINDOW_WIDTH)/2;

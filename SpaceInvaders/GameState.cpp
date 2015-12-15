@@ -1,5 +1,7 @@
 #include "GameState.h"
 #include <string>
+#include <fstream>
+
 void GameState::update()
 {
 	////////////////////////////////////////////////////
@@ -49,12 +51,23 @@ void GameState::update()
 	if (applicationState == GAME)
 	{
 		if (!player.active)
-			applicationState = SPLASH;
+		{
+			// in, out (creates if not exists, overwrites), app (adds to end of file)
+			std::fstream fout("scores.dat", std::ios_base::out | std::ios_base::app);
+			fout << score << std::endl;
+			fout.close();
+
+			applicationState = VICTORY;
+		}
 
 		if (sfw::getKey('P'))
 			applicationState = PAUSE;
 	}
-	else player.setInactive();
+	else
+	{
+		player.setInactive();
+		spawnRate = 1.8f;
+	}
 }
 
 

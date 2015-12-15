@@ -11,7 +11,7 @@ void PauseState::update()
 	if (sfw::getKey(KEY_ENTER))
 		applicationState = GAME;
 	if (sfw::getKey('Q'))
-		applicationState = VICTORY; // Victory
+		applicationState = SPLASH; // Victory
 }
 
 void PauseState::draw()

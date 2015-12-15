@@ -11,7 +11,7 @@ void Player::onUpdate()
 	if (sfw::getKey(' ') && delay > rof)
 	{
 		delay = 0;
-		gs->spawnBullet(position.x, position.y+radius, 300);
+		gs->spawnBullet(position.x, position.y+radius, 400);
 	}
 	if(sfw::getKey('A'))
 	{
