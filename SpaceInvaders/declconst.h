@@ -25,5 +25,5 @@ enum STATE {SPLASH, PLAY, GAME, PAUSE, VICTORY, QUIT, HELP};
 
 extern STATE applicationState;
 
-void drawFontCentered(unsigned sprite, const char* text, unsigned x, unsigned y, unsigned w, unsigned h, unsigned color = 0xffffffff);
+void drawFontCentered(unsigned sprite, const char* text, unsigned x, unsigned y, float w, float h, unsigned color = 0xffffffff);
 

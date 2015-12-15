@@ -58,7 +58,7 @@ void GameState::update()
 			fout.close();
 
 			applicationState = VICTORY;
-		}
+		} 
 
 		if (sfw::getKey('P'))
 			applicationState = PAUSE;

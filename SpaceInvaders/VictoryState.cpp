@@ -20,7 +20,7 @@ void VictoryState::draw()
 	sfw::drawTexture(spriteSpace, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2,
 		WINDOW_WIDTH, WINDOW_HEIGHT, 0, true, 0, 0x88888888);
 
-	unsigned x, y, s;
+	float x, y, s;
 
 	s = 24;
 	x = (WINDOW_WIDTH) / 2;
@@ -51,10 +51,11 @@ void VictoryState::draw()
 
 	s = 24 + sinf(sfw::getTime() * 6) * 2; // sin function w/time lets me modulate the size of my characters	
 	std::string score = "New high score!";
-	drawFontCentered(spriteFont, score.c_str(), //last score is most recent
-		x + sinf(sfw::getTime() * 2) * 9,
-		y + cosf(sfw::getTime() * 2) * 9 + 64,   // x+cos and y+sin = circular!
-		s, s, RED);
+	if(scores[scores.size() - 1] == highScore)
+		drawFontCentered(spriteFont, score.c_str(), //last score is most recent
+			x + sinf(sfw::getTime() * 2) * 9,
+			y + cosf(sfw::getTime() * 2) * 9 + 64,   // x+cos and y+sin = circular!
+			s, s, RED);
 	
 	s = 24 + sinf(sfw::getTime()*5)*3; // sin function w/time lets me modulate the size of my characters	
 	score = "High Score: " + std::to_string(highScore);

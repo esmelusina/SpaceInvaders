@@ -65,7 +65,7 @@ int main()
 	return 0;
 }
 
-void drawFontCentered(unsigned sprite, const char* text, unsigned x, unsigned y, unsigned w, unsigned h, unsigned color)
+void drawFontCentered(unsigned sprite, const char* text, unsigned x, unsigned y, float w, float h, unsigned color)
 {
 	x -= strlen(text) * w / 2;
 	sfw::drawString(spriteFont, text, x, y, w, h, 0, 0, color);
