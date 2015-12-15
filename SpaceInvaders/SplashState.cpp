@@ -34,4 +34,11 @@ void SplashState::draw()
 	y = WINDOW_HEIGHT * 8 / 16;
 	drawFontCentered(spriteFont, "Esmeralda Salamone", x, y, s, s);
 	drawFontCentered(spriteFont, "esmelusina@gmail.com", x, y-19, 16, 16, MAGENTA);
+
+	x -= 120;
+	sfw::drawString(spriteFont, "Controls:", x, y -= 48, s, s);
+	sfw::drawString(spriteFont, "A: Move Left", x, y-=s, 16, 16);
+	sfw::drawString(spriteFont, "D: Move Right", x, y -= 16, 16, 16);
+	sfw::drawString(spriteFont, "P: Pause Game", x, y -= 16, 16, 16);
+	sfw::drawString(spriteFont, "Space Bar: Fire!", x, y -= 16, 16, 16);
 }
